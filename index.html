@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Aplicação Vue.js</title>
+</head>
+<body>
+  <header>
+      <h1 class="header-title">Criptografando e descriptografando um texto</h1>
+  </header>
+
+  <main id="main">
+      <section class="forms">
+          <div class="form-box">
+              <img src="assets/imgs/locked-padlock.png" alt="Imagem cadeado fechado">
+              <h2 class="title">Criptografar</h2>
+              <p class="subtitle">Digite o texto para criptografar</p>
+
+              <form @submit.prevent="crypt">
+                  <input 
+                  type="text" 
+                  v-model="txtToCrypt" 
+                  placeholder="Digite o texto" />
+
+                  <input type="submit" value="Criptografar" />
+                </form>
+          </div>
+
+          <div class="form-box">
+              <img src="assets/imgs/padlock.png" alt="Imagem cadeado aberto">
+              <h2 class="title">Descriptografar</h2>
+              <p class="subtitle">Digite o texto para descriptografar</p>
+              
+              <form @submit.prevent="decrypt">
+                  <input 
+                  type="text" 
+                  v-model="txtToDecrypt" 
+                  placeholder="Digite o texto">
+                  
+                  <input type="submit" value="Descriptografar">
+                </form>
+          </div>
+      </section>
+
+      <section class="box-message" v-if="textResult.length > 0">
+          <h4 class="subtitle">{{ titleResult }}</h4>
+          <h3>{{ textResult }}</h3>
+      </section>
+
+      <section class="box-message" v-if="errorMsg.length > 0">
+          <h3 class="error-title">{{ errorMsg}}</h3>
+      </section>
+  </main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
